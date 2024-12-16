@@ -1,4 +1,4 @@
-#include "Services/StorageAndRetrievalService.hpp"
+#include "StorageAndRetrievalService.hpp"
 
 String<ECSSPacketStoreIdSize> StorageAndRetrievalService::readPacketStoreId(Message& message) {
 	etl::array<uint8_t, ECSSPacketStoreIdSize> packetStoreId = {};

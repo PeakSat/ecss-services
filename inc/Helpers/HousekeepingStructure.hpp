@@ -3,7 +3,7 @@
 
 #include "ECSS_Definitions.hpp"
 #include "ErrorHandler.hpp"
-#include "Helpers/Parameter.hpp"
+#include "Parameter.hpp"
 #include "etl/vector.h"
 
 /**

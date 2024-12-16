@@ -1,7 +1,7 @@
 #ifndef ECSS_SERVICES_MESSAGEPARSER_HPP
 #define ECSS_SERVICES_MESSAGEPARSER_HPP
 
-#include <Services/EventActionService.hpp>
+#include <EventActionService.hpp>
 #include "Message.hpp"
 #include "etl/array.h"
 /**

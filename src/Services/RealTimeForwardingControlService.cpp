@@ -1,7 +1,7 @@
 #include "ECSS_Configuration.hpp"
 #ifdef SERVICE_REALTIMEFORWARDINGCONTROL
 
-#include "Services/RealTimeForwardingControlService.hpp"
+#include "RealTimeForwardingControlService.hpp"
 
 void RealTimeForwardingControlService::addAllReportsOfApplication(ApplicationProcessId applicationID) {
 	for (const auto& service: AllReportTypes::MessagesOfService) {

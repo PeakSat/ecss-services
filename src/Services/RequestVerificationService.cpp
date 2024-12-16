@@ -1,7 +1,7 @@
 #include "ECSS_Configuration.hpp"
 #ifdef SERVICE_REQUESTVERIFICATION
 
-#include "Services/RequestVerificationService.hpp"
+#include "RequestVerificationService.hpp"
 
 
 void RequestVerificationService::assembleReportMessage(const Message& request, Message& report) {

@@ -1,7 +1,7 @@
 #include "ECSS_Configuration.hpp"
 #ifdef SERVICE_FUNCTION
 
-#include "Services/FunctionManagementService.hpp"
+#include "FunctionManagementService.hpp"
 
 void FunctionManagementService::call(Message& msg) {
 	msg.resetRead();
@@ -58,6 +58,10 @@ void FunctionManagementService::execute(Message& message) {
 			ErrorHandler::reportInternalError(ErrorHandler::OtherMessageType);
 			break;
 	}
+}
+
+void FunctionManagementService::initializeFunctionMap() {
+	// Should be implemented? TBD
 }
 
 #endif

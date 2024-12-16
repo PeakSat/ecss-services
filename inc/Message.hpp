@@ -1,12 +1,12 @@
 #ifndef ECSS_SERVICES_PACKET_H
 #define ECSS_SERVICES_PACKET_H
 
-#include <Time/TimeStamp.hpp>
+#include <TimeStamp.hpp>
 #include <cstdint>
 #include <etl/String.hpp>
 #include <etl/wstring.h>
 #include "ECSS_Definitions.hpp"
-#include "Time/Time.hpp"
+#include "Time.hpp"
 #include "macros.hpp"
 
 /**

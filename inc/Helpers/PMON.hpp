@@ -1,7 +1,7 @@
 #ifndef ECSS_SERVICES_PMON_HPP
 #define ECSS_SERVICES_PMON_HPP
 #include <cstdint>
-#include "Helpers/Parameter.hpp"
+#include "Parameter.hpp"
 #include "Message.hpp"
 #include "Service.hpp"
 #include "TimeGetter.hpp"

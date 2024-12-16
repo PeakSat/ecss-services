@@ -1,7 +1,7 @@
 #include "ECSS_Configuration.hpp"
 #ifdef SERVICE_TIMESCHEDULING
 
-#include "Services/TimeBasedSchedulingService.hpp"
+#include "TimeBasedSchedulingService.hpp"
 
 TimeBasedSchedulingService::TimeBasedSchedulingService() {
 	serviceType = TimeBasedSchedulingService::ServiceType;

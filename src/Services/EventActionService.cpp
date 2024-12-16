@@ -3,7 +3,7 @@
 
 #include "Message.hpp"
 #include "MessageParser.hpp"
-#include "Services/EventActionService.hpp"
+#include "EventActionService.hpp"
 
 EventActionService::EventActionDefinition::EventActionDefinition(ApplicationProcessId applicationID, EventDefinitionId eventDefinitionID, Message& message)
     : applicationID(applicationID), eventDefinitionID(eventDefinitionID), request(message.data.begin() + message.readPosition) {

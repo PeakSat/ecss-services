@@ -2,7 +2,7 @@
 #ifdef SERVICE_TEST
 
 #include "ServicePool.hpp"
-#include "Services/TestService.hpp"
+#include "TestService.hpp"
 
 void TestService::areYouAlive(const Message& request) {
 	if (!request.assertTC(TestService::ServiceType, TestService::MessageType::AreYouAliveTest)) {

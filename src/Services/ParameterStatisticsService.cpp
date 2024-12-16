@@ -1,7 +1,7 @@
 #include "ECSS_Configuration.hpp"
 #ifdef SERVICE_PARAMETER
 #include "ServicePool.hpp"
-#include "Services/ParameterStatisticsService.hpp"
+#include "ParameterStatisticsService.hpp"
 
 ParameterStatisticsService::ParameterStatisticsService() : evaluationStartTime(TimeGetter::getCurrentTimeDefaultCUC()) {
 	initializeStatisticsMap();

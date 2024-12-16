@@ -2,13 +2,13 @@
 #define ECSS_SERVICES_TIMEBASEDSCHEDULINGSERVICE_HPP
 
 #include "ErrorHandler.hpp"
-#include "Helpers/CRCHelper.hpp"
+#include "CRCHelper.hpp"
 #include "MessageParser.hpp"
 #include "Service.hpp"
 #include "etl/list.h"
 
 // Include platform specific files
-#include "Helpers/TimeGetter.hpp"
+#include "TimeGetter.hpp"
 
 
 /**

@@ -3,7 +3,7 @@
 
 #include <cerrno>
 #include <etl/String.hpp>
-#include "Services/MemoryManagementService.hpp"
+#include "MemoryManagementService.hpp"
 
 MemoryManagementService::MemoryManagementService() : rawDataMemorySubservice(*this) {
 	serviceType = MemoryManagementService::ServiceType;

@@ -1,8 +1,8 @@
 #include "MessageParser.hpp"
 #include <ServicePool.hpp>
 #include "ErrorHandler.hpp"
-#include "Helpers/CRCHelper.hpp"
-#include "Services/RequestVerificationService.hpp"
+#include "CRCHelper.hpp"
+#include "RequestVerificationService.hpp"
 #include "macros.hpp"
 
 // NOLINTBEGIN(cppcoreguidelines-avoid-magic-numbers) The reason is that we do a lot of bit shifts

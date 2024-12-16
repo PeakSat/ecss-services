@@ -1,5 +1,5 @@
-#include "Time/Time.hpp"
-#include "Time/UTCTimestamp.hpp"
+#include "Time.hpp"
+#include "UTCTimestamp.hpp"
 #include <iomanip>
 
 UTCTimestamp::UTCTimestamp() : year(UNIXEpochYear), month(1), second(0), minute(0), hour(0), day(1) {}

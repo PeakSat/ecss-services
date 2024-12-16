@@ -1,7 +1,7 @@
-#include "Services/FileManagementService.hpp"
+#include "FileManagementService.hpp"
 #include "ErrorHandler.hpp"
-#include "Helpers/FilepathValidators.hpp"
-#include "Helpers/Filesystem.hpp"
+#include "FilepathValidators.hpp"
+#include "Filesystem.hpp"
 #include "Message.hpp"
 
 using namespace FilepathValidators;

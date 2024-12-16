@@ -1,8 +1,8 @@
 #include "ECSS_Configuration.hpp"
 #ifdef SERVICE_PARAMETER
 
-#include "Helpers/Parameter.hpp"
-#include "Services/ParameterService.hpp"
+#include "Parameter.hpp"
+#include "ParameterService.hpp"
 
 
 void ParameterService::reportParameters(Message& paramIds) {

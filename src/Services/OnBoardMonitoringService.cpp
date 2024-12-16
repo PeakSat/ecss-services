@@ -2,7 +2,7 @@
 #ifdef SERVICE_ONBOARDMONITORING
 #include "Message.hpp"
 #include "ServicePool.hpp"
-#include "Services/OnBoardMonitoringService.hpp"
+#include "OnBoardMonitoringService.hpp"
 
 void OnBoardMonitoringService::enableParameterMonitoringDefinitions(Message& message) {
 	if (!message.assertTC(ServiceType, EnableParameterMonitoringDefinitions)) {

@@ -2,7 +2,7 @@
 #define PROJECT_ERRORHANDLER_HPP
 
 #include <type_traits>
-#include "Helpers/TypeDefinitions.hpp"
+#include "TypeDefinitions.hpp"
 
 // Forward declaration of the class, since its header file depends on the ErrorHandler
 class Message;

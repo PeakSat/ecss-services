@@ -1,8 +1,8 @@
 #include "ECSS_Configuration.hpp"
 #ifdef SERVICE_EVENTREPORT
 
-#include <Services/EventActionService.hpp>
-#include <Services/EventReportService.hpp>
+#include <EventActionService.hpp>
+#include <EventReportService.hpp>
 #include "Message.hpp"
 
 /**

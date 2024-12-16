@@ -1,7 +1,7 @@
 #include "ECSS_Configuration.hpp"
 #include <ErrorHandler.hpp>
 #include <ServicePool.hpp>
-#include "Services/RequestVerificationService.hpp"
+#include "RequestVerificationService.hpp"
 
 template <>
 void ErrorHandler::reportError(const Message& message, AcceptanceErrorType errorCode) {

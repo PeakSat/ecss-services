@@ -3,8 +3,8 @@
 
 #include "ECSS_Definitions.hpp"
 #include "ErrorHandler.hpp"
-#include "Helpers/Statistic.hpp"
-#include "Helpers/TimeGetter.hpp"
+#include "Statistic.hpp"
+#include "TimeGetter.hpp"
 #include "Service.hpp"
 #include "etl/deque.h"
 #include "etl/map.h"

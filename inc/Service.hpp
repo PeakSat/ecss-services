@@ -2,7 +2,7 @@
 #define ECSS_SERVICES_SERVICE_HPP
 
 #include <cstdint>
-#include "Helpers/TypeDefinitions.hpp"
+#include "TypeDefinitions.hpp"
 #include "Message.hpp"
 
 /**

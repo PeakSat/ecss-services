@@ -3,8 +3,8 @@
 
 #include "ECSS_Definitions.hpp"
 #include "ErrorHandler.hpp"
-#include "Helpers/AllReportTypes.hpp"
-#include "Helpers/ForwardControlConfiguration.hpp"
+#include "AllReportTypes.hpp"
+#include "ForwardControlConfiguration.hpp"
 #include "Service.hpp"
 #include "etl/vector.h"
 

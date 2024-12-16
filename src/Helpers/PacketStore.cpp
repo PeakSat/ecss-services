@@ -1,4 +1,4 @@
-#include "Helpers/PacketStore.hpp"
+#include "PacketStore.hpp"
 
 uint16_t PacketStore::calculateSizeInBytes() {
 	const uint16_t size = std::accumulate(storedTelemetryPackets.begin(), storedTelemetryPackets.end(), 0, [] // NOLINT (cppcoreguidelines-init-variables)

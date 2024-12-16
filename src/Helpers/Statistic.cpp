@@ -1,4 +1,4 @@
-#include "Helpers/Statistic.hpp"
+#include "Statistic.hpp"
 #include <cmath>
 
 void Statistic::updateStatistics(double value) {

@@ -2,7 +2,7 @@
 #define ECSS_SERVICES_EVENTACTIONSERVICE_HPP
 
 #include "Service.hpp"
-#include "Services/EventReportService.hpp"
+#include "EventReportService.hpp"
 #include "etl/String.hpp"
 #include "etl/multimap.h"
 

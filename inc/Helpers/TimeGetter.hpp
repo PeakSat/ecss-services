@@ -3,8 +3,8 @@
 
 #include <cstdint>
 #include <ctime>
-#include "Time/TimeStamp.hpp"
-#include "Time/UTCTimestamp.hpp"
+#include "TimeStamp.hpp"
+#include "UTCTimestamp.hpp"
 
 /**
  * @brief Get the current time

@@ -1,5 +1,5 @@
-#include "Helpers/CRCHelper.hpp"
-#include "Helpers/TypeDefinitions.hpp"
+#include "CRCHelper.hpp"
+#include "TypeDefinitions.hpp"
 
 uint16_t CRCHelper::calculateCRC(const uint8_t* message, uint32_t length) {
 	// shift register contains all 1's initially (ECSS-E-ST-70-41C, Annex B - CRC and ISO checksum)

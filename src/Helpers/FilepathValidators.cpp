@@ -1,4 +1,4 @@
-#include "Helpers/FilepathValidators.hpp"
+#include "FilepathValidators.hpp"
 
 namespace FilepathValidators {
 	etl::optional<size_t> findWildcardPosition(const Filesystem::Path& path) {
