@@ -27,17 +27,17 @@ private:
 	/**
 	 * Maximum number of checks for each Limit Check.
 	 */
-	static constexpr uint8_t MaximumNumberOfChecksLimitCheck = 32;
+	static constexpr uint8_t MaximumNumberOfChecksLimitCheck = 1;
 
 	/**
 	 * Maximum number of checks for each Expected Value Check.
 	 */
-	static constexpr uint8_t MaximumNumberOfChecksExpectedValueCheck = 32;
+	static constexpr uint8_t MaximumNumberOfChecksExpectedValueCheck = 1;
 
 	/**
 	 * Maximum number of checks for each Delta check.
 	 */
-	static constexpr uint8_t MaximumNumberOfChecksDeltaCheck = 32;
+	static constexpr uint8_t MaximumNumberOfChecksDeltaCheck = 1;
 
 	/**
 	 * This vector is used as a mean of storing the PMON Definitons
@@ -86,7 +86,7 @@ public:
 
 	OnBoardMonitoringService() {
 		serviceType = ServiceType;
-		initializeParameterMonitoringList();
+		initializeParameterMonitoringMap();
 	}
 
 	/**
