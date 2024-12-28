@@ -63,7 +63,7 @@ private:
 	/**
 	 * Initialize the ParameterMonitoringList map with default definitions.
 	 */
-	void initializeParameterMonitoringList();
+	void initializeParameterMonitoringMap();
 
 public:
 	inline static constexpr ServiceTypeNum ServiceType = 12;

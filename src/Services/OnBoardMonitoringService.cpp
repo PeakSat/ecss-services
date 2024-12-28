@@ -5,7 +5,7 @@
 #include "ServicePool.hpp"
 
 
-void OnBoardMonitoringService::initializeParameterMonitoringList() {
+void OnBoardMonitoringService::initializeParameterMonitoringMap() {
 	static etl::array<PMONDeltaCheck, MaximumNumberOfChecksDeltaCheck> deltaChecks {
 		PMONDeltaCheck(AcubeSATParameters::OBCPCBTemperature1, 5, 2, -3, 0, +3, 0)
 	};
