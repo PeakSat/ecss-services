@@ -60,6 +60,11 @@ private:
 	 */
 	etl::vector<PMONDeltaCheck, MaximumNumberOfChecksDeltaCheck> deltaChecks;
 
+	/**
+	 * Initialize the ParameterMonitoringList map with default definitions.
+	 */
+	void initializeParameterMonitoringList();
+
 public:
 	inline static constexpr ServiceTypeNum ServiceType = 12;
 	enum MessageType : uint8_t {
@@ -81,6 +86,7 @@ public:
 
 	OnBoardMonitoringService() {
 		serviceType = ServiceType;
+		initializeParameterMonitoringList();
 	}
 
 	/**

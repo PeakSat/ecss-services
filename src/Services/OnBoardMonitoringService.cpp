@@ -1,8 +1,19 @@
 #include "ECSS_Configuration.hpp"
 #ifdef SERVICE_ONBOARDMONITORING
 #include "Message.hpp"
-#include "ServicePool.hpp"
 #include "OnBoardMonitoringService.hpp"
+#include "ServicePool.hpp"
+
+
+void OnBoardMonitoringService::initializeParameterMonitoringList() {
+	static etl::array<PMONDeltaCheck, MaximumNumberOfChecksDeltaCheck> deltaChecks {
+		PMONDeltaCheck(AcubeSATParameters::OBCPCBTemperature1, 5, 2, -3, 0, +3, 0)
+	};
+	for (auto& deltaCheck : deltaChecks) {
+		addPMONDeltaCheck(deltaCheck.monitoredParameterId, deltaCheck);
+	}
+}
+
 
 void OnBoardMonitoringService::enableParameterMonitoringDefinitions(Message& message) {
 	if (!message.assertTC(ServiceType, EnableParameterMonitoringDefinitions)) {
@@ -310,7 +321,7 @@ void OnBoardMonitoringService::reportParameterMonitoringDefinitions(Message& mes
 }
 
 void OnBoardMonitoringService::checkAll() const {
-	for (const auto& entry : parameterMonitoringList) {
+	for (const auto& entry: parameterMonitoringList) {
 		auto& pmon = entry.second.get();
 		if (pmon.isMonitoringEnabled()) {
 			pmon.performCheck();
