@@ -206,7 +206,7 @@ public:
 	/**
 	 * TM[12,9]
 	 */
-	void parameterMonitoringDefinitionReport(Message& message);
+	void parameterMonitorzingDefinitionReport(Message& message);
 
 	/**
 	 * TC[12,10]
