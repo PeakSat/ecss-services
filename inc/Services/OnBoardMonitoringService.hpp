@@ -27,17 +27,17 @@ private:
 	/**
 	 * Maximum number of checks for each Limit Check.
 	 */
-	static constexpr uint8_t MaximumNumberOfChecksLimitCheck = 32;
+	static constexpr uint8_t MaximumNumberOfChecksLimitCheck = 1;
 
 	/**
 	 * Maximum number of checks for each Expected Value Check.
 	 */
-	static constexpr uint8_t MaximumNumberOfChecksExpectedValueCheck = 32;
+	static constexpr uint8_t MaximumNumberOfChecksExpectedValueCheck = 1;
 
 	/**
 	 * Maximum number of checks for each Delta check.
 	 */
-	static constexpr uint8_t MaximumNumberOfChecksDeltaCheck = 32;
+	static constexpr uint8_t MaximumNumberOfChecksDeltaCheck = 1;
 
 	/**
 	 * This vector is used as a mean of storing the PMON Definitons
@@ -60,6 +60,11 @@ private:
 	 */
 	etl::vector<PMONDeltaCheck, MaximumNumberOfChecksDeltaCheck> deltaChecks;
 
+	/**
+	 * Initialize the ParameterMonitoringList map with default definitions.
+	 */
+	void initializeParameterMonitoringMap();
+
 public:
 	inline static constexpr ServiceTypeNum ServiceType = 12;
 	enum MessageType : uint8_t {
@@ -81,6 +86,7 @@ public:
 
 	OnBoardMonitoringService() {
 		serviceType = ServiceType;
+		initializeParameterMonitoringMap();
 	}
 
 	/**
@@ -200,7 +206,7 @@ public:
 	/**
 	 * TM[12,9]
 	 */
-	void parameterMonitoringDefinitionReport(Message& message);
+	void parameterMonitorzingDefinitionReport(Message& message);
 
 	/**
 	 * TC[12,10]

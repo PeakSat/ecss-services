@@ -1,8 +1,8 @@
 #include "ECSS_Configuration.hpp"
 #ifdef SERVICE_ONBOARDMONITORING
 #include "Message.hpp"
-#include "ServicePool.hpp"
 #include "OnBoardMonitoringService.hpp"
+#include "ServicePool.hpp"
 
 void OnBoardMonitoringService::enableParameterMonitoringDefinitions(Message& message) {
 	if (!message.assertTC(ServiceType, EnableParameterMonitoringDefinitions)) {
@@ -310,7 +310,7 @@ void OnBoardMonitoringService::reportParameterMonitoringDefinitions(Message& mes
 }
 
 void OnBoardMonitoringService::checkAll() const {
-	for (const auto& entry : parameterMonitoringList) {
+	for (const auto& entry: parameterMonitoringList) {
 		auto& pmon = entry.second.get();
 		if (pmon.isMonitoringEnabled()) {
 			pmon.performCheck();
