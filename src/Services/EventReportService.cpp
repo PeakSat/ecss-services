@@ -1,7 +1,6 @@
 #include "ECSS_Configuration.hpp"
 #ifdef SERVICE_EVENTREPORT
 
-#include <EventActionService.hpp>
 #include <EventReportService.hpp>
 #include "Message.hpp"
 
@@ -14,8 +13,6 @@ void EventReportService::informativeEventReport(Event eventID, const String<ECSS
 		Message report = createTM(EventReportService::MessageType::InformativeEventReport);
 		report.append<EventDefinitionId>(eventID);
 		report.appendString(data);
-		EventActionService eventActionService;
-		eventActionService.executeAction(eventID);
 
 		storeMessage(report);
 	}
@@ -31,8 +28,6 @@ void EventReportService::lowSeverityAnomalyReport(Event eventID, const String<EC
 		lastLowSeverityReportID = static_cast<EventDefinitionId>(eventID);
 
 		storeMessage(report);
-		EventActionService eventActionService;
-		eventActionService.executeAction(eventID);
 	}
 }
 
@@ -46,8 +41,6 @@ void EventReportService::mediumSeverityAnomalyReport(Event eventID, const String
 		lastMediumSeverityReportID = static_cast<EventDefinitionId>(eventID);
 
 		storeMessage(report);
-		EventActionService eventActionService;
-		eventActionService.executeAction(eventID);
 	}
 }
 
@@ -61,8 +54,6 @@ void EventReportService::highSeverityAnomalyReport(Event eventID, const String<E
 		lastHighSeverityReportID = static_cast<EventDefinitionId>(eventID);
 
 		storeMessage(report);
-		EventActionService eventActionService;
-		eventActionService.executeAction(eventID);
 	}
 }
 
