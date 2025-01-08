@@ -108,6 +108,10 @@ public:
 		 * An unknown or unsupported PMON check type was encountered
 		 */
 		UnknownCheckType = 19,
+
+		InvalidEventID = 20,
+
+		EventDataSizeExeceded =21
 	};
 
 	/**
