@@ -1,3 +1,5 @@
+#include <ApplicationLayer.hpp>
+
 #include "ECSS_Configuration.hpp"
 #ifdef SERVICE_EVENTREPORT
 
@@ -10,12 +12,8 @@
  */
 
 bool EventReportService::validateParameters(Event eventID, const String<ECSSEventDataAuxiliaryMaxSize>& data) {
-	if (eventID >= numberOfEvents || eventID == 0) {
+	if (static_cast<EventDefinitionId>(eventID) >= numberOfEvents || static_cast<EventDefinitionId>(eventID) == 0) {
 		ErrorHandler::reportInternalError(ErrorHandler::InternalErrorType::InvalidEventID);
-		return false;
-	}
-	if (data.length() > ECSSEventDataAuxiliaryMaxSize) {
-		ErrorHandler::reportInternalError(ErrorHandler::InternalErrorType::EventDataSizeExeceded);
 		return false;
 	}
 	return true;
