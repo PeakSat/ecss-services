@@ -10,7 +10,7 @@
  */
 
 bool EventReportService::validateParameters(Event eventID, const String<ECSSEventDataAuxiliaryMaxSize>& data) {
-	if (eventID >= numberOfEvents) {
+	if (eventID >= numberOfEvents || eventID == 0) {
 		ErrorHandler::reportInternalError(ErrorHandler::InternalErrorType::InvalidEventID);
 		return false;
 	}
@@ -93,7 +93,11 @@ void EventReportService::enableReportGeneration(Message& message) {
 		//Add ST[01] handling
 		return;
 	}
-	if (length <= numberOfEvents) { for (uint16_t i = 0; i < length; i++) { stateOfEvents[message.read<EventDefinitionId>()] = true; } }
+	if (length <= numberOfEvents) {
+		for (uint16_t i = 0; i < length; i++) {
+			stateOfEvents[message.read<EventDefinitionId>()] = true;
+		}
+	}
 	disabledEventsCount = stateOfEvents.size() - stateOfEvents.count();
 }
 
@@ -104,7 +108,11 @@ void EventReportService::disableReportGeneration(Message& message) {
 		//Add ST[01] handling
 		return;
 	}
-	if (length <= numberOfEvents) { for (uint16_t i = 0; i < length; i++) { stateOfEvents[message.read<EventDefinitionId>()] = false; } }
+	if (length <= numberOfEvents) {
+		for (uint16_t i = 0; i < length; i++) {
+			stateOfEvents[message.read<EventDefinitionId>()] = false;
+		}
+	}
 	disabledEventsCount = stateOfEvents.size() - stateOfEvents.count();
 }
 
