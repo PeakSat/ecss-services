@@ -16,6 +16,10 @@
 
 class EventReportService : public Service
 {
+private:
+    static constexpr uint16_t numberOfEvents = 8;
+    etl::bitset<numberOfEvents> stateOfEvents;
+    static constexpr uint16_t LastElementID = std::numeric_limits<uint16_t>::max();
 public:
     inline static constexpr ServiceTypeNum ServiceType = 5;
 
@@ -75,37 +79,34 @@ public:
         /**
          * An unknown event occured
          */
-        InformativeUnknownEvent = 0,
+        UnknownEvent = 1,
         /**
          * Watchdogs have reset
          */
-        WWDGReset = 1,
+        WWDGReset = 2,
         /**
          * Assertion has failed
          */
-        AssertionFail = 2,
+        AssertionFail = 3,
         /**
          * Microcontroller has started
          */
-        MCUStart = 3,
-        /**
-         * An unknown anomaly of low severity anomalyhas occurred
-         */
-        LowSeverityUnknownEvent = 4,
-        /**
-         * An unknown anomaly of medium severity has occurred
-         */
-        MediumSeverityUnknownEvent = 5,
-        /**
-         * An unknown anomaly of high severity has occurred
-         */
-        HighSeverityUnknownEvent = 6,
+        MCUStart = 4,
+
         /**
          * When an execution of a notification/event fails to start
          */
-        FailedStartOfExecution = 7
+        FailedStartOfExecution = 5
     };
 
+    /**
+     * Validates the parameters for an event.
+     * Ensures the event ID is within the allowable range and not 0.
+     *
+     * @param eventID The ID of the event to validate.
+     * @return True if parameters are valid, false otherwise.
+     */
+    static bool validateParameters(Event eventID);
 
     /**
      * TM[5,1] informative event report
@@ -184,20 +185,6 @@ public:
      */
     void listOfDisabledEventsReport();
 
-    /**
-     * It is responsible to call the suitable function that executes a telecommand packet. The source of that packet
-     * is the ground station.
-     *
-     * @note This function is called from the main execute() that is defined in the file MessageParser.hpp
-     * @param message Contains the necessary parameters to call the suitable subservice
-     */
-    void execute(Message& message);
-
-private:
-    static constexpr uint16_t numberOfEvents = 8;
-    etl::bitset<numberOfEvents> stateOfEvents;
-    static constexpr uint16_t LastElementID = std::numeric_limits<uint16_t>::max();
-    static inline bool validateParameters(Event eventID, const String<ECSSEventDataAuxiliaryMaxSize>& data);
 
     /**
      * Getter for stateOfEvents bitset
@@ -207,6 +194,16 @@ private:
     {
         return stateOfEvents;
     }
+
+    /**
+     * It is responsible to call the suitable function that executes a telecommand packet. The source of that packet
+     * is the ground station.
+     *
+     * @note This function is called from the main execute() that is defined in the file MessageParser.hpp
+     * @param message Contains the necessary parameters to call the suitable subservice
+     */
+    void execute(Message& message);
+
 };
 
 #endif // ECSS_SERVICES_EVENTREPORTSERVICE_HPP

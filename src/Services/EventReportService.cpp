@@ -1,9 +1,9 @@
-#include <ApplicationLayer.hpp>
 
 #include "ECSS_Configuration.hpp"
 #ifdef SERVICE_EVENTREPORT
 
 #include <EventReportService.hpp>
+#include "ErrorHandler.hpp"
 #include "Message.hpp"
 
 /**
@@ -11,7 +11,9 @@
  * @todo (#253): this code is error prone, depending on parameters given, add fail safes (probably?)
  */
 
-bool EventReportService::validateParameters(Event eventID, const String<ECSSEventDataAuxiliaryMaxSize>& data) {
+
+
+bool EventReportService::validateParameters(Event eventID) {
 	if (static_cast<EventDefinitionId>(eventID) >= numberOfEvents || static_cast<EventDefinitionId>(eventID) == 0) {
 		ErrorHandler::reportInternalError(ErrorHandler::InternalErrorType::InvalidEventID);
 		return false;
@@ -21,8 +23,9 @@ bool EventReportService::validateParameters(Event eventID, const String<ECSSEven
 
 
 void EventReportService::informativeEventReport(Event eventID, const String<ECSSEventDataAuxiliaryMaxSize>& data) {
-	if (!validateParameters(eventID, data)) {
+	if (!validateParameters(eventID)) {
 		//Add ST[01] handling
+		ErrorHandler::reportInternalError(ErrorHandler::InternalErrorType::LengthExceedsNumberOfEvents);
 		return;
 	}
 	if (stateOfEvents[static_cast<EventDefinitionId>(eventID)]) {
@@ -34,7 +37,7 @@ void EventReportService::informativeEventReport(Event eventID, const String<ECSS
 }
 
 void EventReportService::lowSeverityAnomalyReport(Event eventID, const String<ECSSEventDataAuxiliaryMaxSize>& data) {
-	if (!validateParameters(eventID, data)) {
+	if (!validateParameters(eventID)) {
 		//Add ST[01] handling
 		return;
 	}
@@ -51,8 +54,9 @@ void EventReportService::lowSeverityAnomalyReport(Event eventID, const String<EC
 }
 
 void EventReportService::mediumSeverityAnomalyReport(Event eventID, const String<ECSSEventDataAuxiliaryMaxSize>& data) {
-	if (!validateParameters(eventID, data)) {
+	if (!validateParameters(eventID)) {
 		//Add ST[01] handling
+		ErrorHandler::reportInternalError(ErrorHandler::InternalErrorType::LengthExceedsNumberOfEvents);
 		return;
 	}
 	mediumSeverityEventCount++;
@@ -68,8 +72,9 @@ void EventReportService::mediumSeverityAnomalyReport(Event eventID, const String
 }
 
 void EventReportService::highSeverityAnomalyReport(Event eventID, const String<ECSSEventDataAuxiliaryMaxSize>& data) {
-	if (!validateParameters(eventID, data)) {
+	if (!validateParameters(eventID)) {
 		//Add ST[01] handling
+		ErrorHandler::reportInternalError(ErrorHandler::InternalErrorType::LengthExceedsNumberOfEvents);
 		return;
 	}
 	highSeverityEventCount++;
@@ -89,6 +94,7 @@ void EventReportService::enableReportGeneration(Message& message) {
 	uint16_t const length = message.readUint16();
 	if (length > numberOfEvents) {
 		//Add ST[01] handling
+		ErrorHandler::reportInternalError(ErrorHandler::InternalErrorType::LengthExceedsNumberOfEvents);
 		return;
 	}
 	if (length <= numberOfEvents) {
@@ -104,6 +110,7 @@ void EventReportService::disableReportGeneration(Message& message) {
 	uint16_t const length = message.readUint16();
 	if (length > numberOfEvents) {
 		//Add ST[01] handling
+		ErrorHandler::reportInternalError(ErrorHandler::InternalErrorType::LengthExceedsNumberOfEvents);
 		return;
 	}
 	if (length <= numberOfEvents) {
