@@ -1,4 +1,3 @@
-
 #include "ECSS_Configuration.hpp"
 #ifdef SERVICE_EVENTREPORT
 
@@ -6,12 +5,6 @@
 #include <ServicePool.hpp>
 #include "ErrorHandler.hpp"
 #include "Message.hpp"
-
-
-/**
- * EventActionService instance, delcared in the .cpp to avoid circular dependencies with ServicePool.hpp
- */
-static constexpr EventActionService& eventActionService = Services.eventAction;
 
 bool EventReportService::validateParameters(Event eventID) {
 	if (static_cast<EventDefinitionId>(eventID) >= numberOfEvents || static_cast<EventDefinitionId>(eventID) == 0) {
@@ -32,7 +25,7 @@ void EventReportService::informativeEventReport(Event eventID, const String<ECSS
 		report.append<EventDefinitionId>(eventID);
 		report.appendString(data);
 
-		eventActionService.executeAction(eventID);
+		Services.eventAction.executeAction(eventID);
 		storeMessage(report);
 	}
 }
@@ -50,7 +43,7 @@ void EventReportService::lowSeverityAnomalyReport(Event eventID, const String<EC
 		report.appendString(data);
 		lastLowSeverityReportID = static_cast<EventDefinitionId>(eventID);
 
-		eventActionService.executeAction(eventID);
+		Services.eventAction.executeAction(eventID);
 		storeMessage(report);
 	}
 }
@@ -68,7 +61,7 @@ void EventReportService::mediumSeverityAnomalyReport(Event eventID, const String
 		report.appendString(data);
 		lastMediumSeverityReportID = static_cast<EventDefinitionId>(eventID);
 
-		eventActionService.executeAction(eventID);
+		Services.eventAction.executeAction(eventID);
 		storeMessage(report);
 	}
 }
@@ -86,7 +79,7 @@ void EventReportService::highSeverityAnomalyReport(Event eventID, const String<E
 		report.appendString(data);
 		lastHighSeverityReportID = static_cast<EventDefinitionId>(eventID);
 
-		eventActionService.executeAction(eventID);
+		Services.eventAction.executeAction(eventID);
 		storeMessage(report);
 	}
 }
@@ -99,11 +92,7 @@ void EventReportService::enableReportGeneration(Message& message) {
 		ErrorHandler::reportInternalError(ErrorHandler::InternalErrorType::LengthExceedsNumberOfEvents);
 		return;
 	}
-	if (length <= numberOfEvents) {
-		for (uint16_t i = 0; i < length; i++) {
-			stateOfEvents[message.read<EventDefinitionId>()] = true;
-		}
-	}
+	if (length <= numberOfEvents) { for (uint16_t i = 0; i < length; i++) { stateOfEvents[message.read<EventDefinitionId>()] = true; } }
 	disabledEventsCount = stateOfEvents.size() - stateOfEvents.count();
 }
 
@@ -115,11 +104,7 @@ void EventReportService::disableReportGeneration(Message& message) {
 		ErrorHandler::reportInternalError(ErrorHandler::InternalErrorType::LengthExceedsNumberOfEvents);
 		return;
 	}
-	if (length <= numberOfEvents) {
-		for (uint16_t i = 0; i < length; i++) {
-			stateOfEvents[message.read<EventDefinitionId>()] = false;
-		}
-	}
+	if (length <= numberOfEvents) { for (uint16_t i = 0; i < length; i++) { stateOfEvents[message.read<EventDefinitionId>()] = false; } }
 	disabledEventsCount = stateOfEvents.size() - stateOfEvents.count();
 }
 
