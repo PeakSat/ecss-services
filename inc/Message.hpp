@@ -4,7 +4,13 @@
 #include <TimeStamp.hpp>
 #include <cstdint>
 #include <etl/String.hpp>
+
+// #ifdef COMMS_SW
+// #include "../../Lib/etl-20.38.17/include/etl/wstring.h"
+// #else
 #include <etl/wstring.h>
+// #endif
+
 #include "ECSS_Definitions.hpp"
 #include "Time.hpp"
 #include "macros.hpp"
