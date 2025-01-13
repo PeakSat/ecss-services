@@ -1,7 +1,12 @@
 #ifndef ECSS_SERVICES_SERVICEPOOL_HPP
 #define ECSS_SERVICES_SERVICEPOOL_HPP
 
+#ifdef COMMS_SW
+#include "COMMS_ECSS_Configuration.hpp"
+#else
 #include "ECSS_Configuration.hpp"
+#endif
+
 #include "EventActionService.hpp"
 #include "EventReportService.hpp"
 #include "FileManagementService.hpp"
