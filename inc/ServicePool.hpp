@@ -76,7 +76,6 @@ public:
 	MemoryManagementService memoryManagement;
 #endif
 
-
 #ifdef SERVICE_PARAMETER
 	ParameterService parameterManagement;
 #endif
